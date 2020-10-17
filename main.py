@@ -1,3 +1,12 @@
+"""
+to Open Google say "Open Google"
+to Open Youtube say "Open youtueb"
+to Open Facebook say "Open Facebook"
+to search something in wikipedia say search at the begining like "search who is Amitach Bachchan"
+to send email say send at the beginning like "send email to someone"
+to stop the programe say "Shut Down" or "down"
+"""
+
 import os
 from datetime import datetime
 import webbrowser
