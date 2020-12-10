@@ -21,7 +21,7 @@ def speak(audio):
     import pyttsx3
     # you in windows then replace'expeak' to 'sapi5'.
     computer = pyttsx3.init('sapi5')
-    rate = computer.getProperty('rate')
+    computer.getProperty('rate')
     computer.setProperty('rate', 140)
     voices = computer.getProperty('voices')
     computer.setProperty('voice', voices[1].id)
@@ -119,29 +119,30 @@ if __name__ == "__main__":
             print(result)
             speak(result)
 
-        elif 'Send' in query:
+        elif 'mail' in query:
             try:
                 data = get_json()
-                something_hide = query.replace(" ", "")
-                n = something_hide.index('o')
-                main_reciver = something_hide[n:]
+                speak("Who you want send the mail to")
+                reciever_name = recognize_voice()
+                perfect_reciever_name = reciever_name.replace(" ", "")
                 speak('Now. What do you want to tell him or her')
                 context = recognize_voice()
-                reciever = (f"{main_reciver}@gmail.com")
+                reciever = (f"{perfect_reciever_name}@gmail.com")
                 send_email(data['user_name'],
                            data['password'], reciever, context)
 
             except Exception as e:
                 speak(r"Sorry. Don't Recongnize")
+                print(e)
 
         elif 'Wait' in query:
             speak('OK')
             wait()
 
-        elif 'Down' in query:
+        elif 'Goodbye' in query:
             speak('OK')
             shut_down()
 
-        elif 'down' in query:
+        elif 'Bye' in query:
             speak('OK')
             shut_down()
